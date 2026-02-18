@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "../../../api/axios";
 
 const ATSHero = ({ onAnalyze }) => {
   const [resumeFile, setResumeFile] = useState(null);
@@ -8,23 +9,31 @@ const ATSHero = ({ onAnalyze }) => {
 
   const handleUpload = (e) => setResumeFile(e.target.files[0]);
 
-  const handleAnalyze = () => {
+  const handleAnalyze = async () => {
     if (!resumeFile || !jobDesc) {
       alert("Please upload a resume and enter a job description!");
       return;
     }
+
     setLoading(true);
-    setTimeout(() => {
-      const dummyResult = {
-        score: 78,
-        level: "Good Match",
-        skillsMatched: ["React", "Docker"],
-        totalSkills: ["React", "Node.js", "Docker", "MongoDB"],
-      };
-      setResult(dummyResult);
+
+    try {
+      const formData = new FormData();
+      formData.append("resume", resumeFile);
+      formData.append("jobDesc", jobDesc);
+
+      const response = await axios.post("/resume/upload", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      setResult(response.data.result); // set ATS result from backend
+      if (onAnalyze) onAnalyze(response.data);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to upload resume. Try again.");
+    } finally {
       setLoading(false);
-      if (onAnalyze) onAnalyze({ resumeFile, jobDesc });
-    }, 1200);
+    }
   };
 
   const circumference = 2 * Math.PI * 54;

@@ -15,7 +15,7 @@ const FinalCTA = () => {
 
         <Link
           to="/ats"
-          className="inline-block mt-8 bg-white text-blue-900 px-8 py-3 font-bold uppercase hover:bg-slate-100 transition"
+          className="inline-block rounded mt-8 bg-white text-blue-900 px-8 py-3 font-bold uppercase hover:bg-slate-100 transition"
         >
           Access Analyzer Portal
         </Link>

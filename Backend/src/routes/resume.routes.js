@@ -1,14 +1,14 @@
-// Backend/src/routes/resume.routes.js
 const express = require("express");
-const router = express.Router();
-
-// Import the controller
+const multer = require("multer");
 const { uploadResume } = require("../controllers/resume.controller");
 
-// POST endpoint to upload resume
-router.post("/upload", uploadResume); // ✅ pass function reference
+const router = express.Router();
 
-// Add more resume-related endpoints here if needed
-// router.get("/history", getResumeHistory);
+// Multer setup: memory storage
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
+// Single file upload + controller handler
+router.post("/upload", upload.single("resume"), uploadResume);
 
 module.exports = router;

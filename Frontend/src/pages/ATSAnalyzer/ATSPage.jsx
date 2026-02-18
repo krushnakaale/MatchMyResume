@@ -1,7 +1,5 @@
 import { useState } from "react";
 import ATSHero from "./sections/ATSHero";
-// import ResultSection from "./sections/ResultSection ";
-// import ScoreBreakdown from "./sections/ScoreBreakdown";
 
 const ATSPage = () => {
   // Local state to store analysis result and skills
@@ -34,8 +32,6 @@ const ATSPage = () => {
   return (
     <>
       <ATSHero onAnalyze={handleAnalyze} />
-      {/* <ResultSection result={result} /> */}
-      {/* <ScoreBreakdown skills={skills} /> */}
     </>
   );
 };

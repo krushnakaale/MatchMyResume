@@ -3,21 +3,21 @@ import React, { useState } from "react";
 const COLORS = [
   {
     bar: "#facc15",
-    glow: "rgba(250,204,21,0.3)",
+    glow: "rgba(250,204,21,0.35)",
     text: "text-yellow-400",
     badge: "bg-yellow-400/10 border-yellow-400/30",
     ring: "#facc15",
   },
   {
     bar: "#818cf8",
-    glow: "rgba(129,140,248,0.25)",
+    glow: "rgba(129,140,248,0.3)",
     text: "text-indigo-400",
     badge: "bg-indigo-500/10 border-indigo-500/20",
     ring: "#818cf8",
   },
   {
     bar: "#34d399",
-    glow: "rgba(52,211,153,0.25)",
+    glow: "rgba(52,211,153,0.3)",
     text: "text-emerald-400",
     badge: "bg-emerald-500/10 border-emerald-500/20",
     ring: "#34d399",
@@ -40,7 +40,6 @@ const COLORS = [
 
 const MEDALS = ["🥇", "🥈", "🥉"];
 
-// Radial Donut Chart
 const RadialChart = ({ leaderboard, maxScore, activeIdx, onHover }) => {
   const cx = 130,
     cy = 130,
@@ -62,7 +61,7 @@ const RadialChart = ({ leaderboard, maxScore, activeIdx, onHover }) => {
               width="200%"
               height="200%"
             >
-              <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+              <feGaussianBlur stdDeviation="4" result="coloredBlur" />
               <feMerge>
                 <feMergeNode in="coloredBlur" />
                 <feMergeNode in="SourceGraphic" />
@@ -75,9 +74,9 @@ const RadialChart = ({ leaderboard, maxScore, activeIdx, onHover }) => {
           const progress = person.score / maxScore;
           const r = outerRadius - i * (ringWidth + gap / 2);
           const circumference = 2 * Math.PI * r;
-          const arcLength = circumference * 0.75; // 270deg arc
+          const arcLength = circumference * 0.75;
           const filledLength = arcLength * progress;
-          const rotation = 135; // start from bottom-left
+          const rotation = 135;
           const isActive = activeIdx === i;
 
           return (
@@ -114,7 +113,7 @@ const RadialChart = ({ leaderboard, maxScore, activeIdx, onHover }) => {
                 transform={`rotate(${rotation} ${cx} ${cy})`}
                 filter={isActive ? `url(#glow-${i})` : undefined}
                 style={{
-                  transition: "stroke-dasharray 1s ease, opacity 0.2s",
+                  transition: "stroke-dasharray 1s ease, opacity 0.3s",
                   opacity: activeIdx !== null && !isActive ? 0.3 : 1,
                 }}
               />
@@ -130,7 +129,7 @@ const RadialChart = ({ leaderboard, maxScore, activeIdx, onHover }) => {
               y={cy - 10}
               textAnchor="middle"
               fill={COLORS[activeIdx % COLORS.length].bar}
-              fontSize="22"
+              fontSize="24"
               fontWeight="800"
               fontFamily="monospace"
             >
@@ -138,25 +137,24 @@ const RadialChart = ({ leaderboard, maxScore, activeIdx, onHover }) => {
             </text>
             <text
               x={cx}
-              y={cy + 8}
+              y={cy + 10}
               textAnchor="middle"
               fill="rgba(255,255,255,0.5)"
-              fontSize="9"
+              fontSize="10"
               fontFamily="monospace"
-              letterSpacing="2"
             >
               PTS
             </text>
             <text
               x={cx}
-              y={cy + 24}
+              y={cy + 28}
               textAnchor="middle"
               fill="rgba(255,255,255,0.6)"
-              fontSize="10"
+              fontSize="12"
               fontFamily="sans-serif"
               fontWeight="600"
             >
-              {leaderboard[activeIdx]?.name?.split(" ")[0]}
+              {leaderboard[activeIdx]?.name.split(" ")[0]}
             </text>
           </>
         ) : (
@@ -187,8 +185,7 @@ const RadialChart = ({ leaderboard, maxScore, activeIdx, onHover }) => {
         )}
       </svg>
 
-      {/* Legend dots */}
-      <div className="flex flex-wrap justify-center gap-3 mt-1">
+      <div className="flex flex-wrap justify-center gap-3 mt-2">
         {leaderboard.slice(0, 5).map((p, i) => (
           <button
             key={i}
@@ -224,26 +221,24 @@ const LeaderboardHero = ({ leaderboard = dummyLeaderboard }) => {
   const maxScore = Math.max(...leaderboard.map((p) => p.score));
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-slate-900/100 to-slate-950/80 py-16 px-4">
+    <section className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-950/80 py-16 px-4">
       <div className="max-w-4xl mx-auto space-y-10">
-        {/* Header */}
         <div className="text-center space-y-3">
           <span className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-yellow-400 uppercase bg-yellow-400/10 border border-yellow-400/20 rounded-full px-4 py-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />{" "}
             Live Rankings
           </span>
           <h1 className="text-4xl font-extrabold text-white tracking-tight">
             Top <span className="text-yellow-400">Performers</span>
           </h1>
-          <p className="text-sm text-slate-500 font-mono">
-            Hover the chart to explore individual scores
+          <p className="text-sm text-slate-400 font-mono">
+            Hover the chart to explore scores
           </p>
         </div>
 
-        {/* Main Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           {/* Left: Radial Chart */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col items-center">
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col items-center shadow-lg hover:shadow-2xl transition-shadow duration-300">
             <p className="text-xs font-mono tracking-widest text-slate-500 uppercase mb-4">
               Score Distribution
             </p>
@@ -256,7 +251,7 @@ const LeaderboardHero = ({ leaderboard = dummyLeaderboard }) => {
           </div>
 
           {/* Right: Rankings List */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-3">
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-3 shadow-lg hover:shadow-2xl transition-shadow duration-300">
             <p className="text-xs font-mono tracking-widest text-slate-500 uppercase mb-4">
               Rankings
             </p>
@@ -271,14 +266,12 @@ const LeaderboardHero = ({ leaderboard = dummyLeaderboard }) => {
                   key={idx}
                   onMouseEnter={() => setActiveIdx(idx)}
                   onMouseLeave={() => setActiveIdx(null)}
-                  className={`rounded-xl border p-4 cursor-pointer transition-all duration-200 ${color.badge}
-                    ${isActive ? "scale-[1.02] shadow-lg" : "hover:scale-[1.01]"}
-                    ${activeIdx !== null && !isActive ? "opacity-40" : "opacity-100"}
-                  `}
+                  className={`rounded-xl border p-4 cursor-pointer transition-all duration-300 ${color.badge}
+                    ${isActive ? "scale-[1.03] shadow-2xl" : "hover:scale-[1.01]"}
+                    ${activeIdx !== null && !isActive ? "opacity-40" : "opacity-100"}`}
                 >
                   <div className="flex items-center justify-between mb-2.5">
                     <div className="flex items-center gap-3">
-                      {/* Rank */}
                       <span className="text-base w-7 text-center">
                         {idx < 3 ? (
                           MEDALS[idx]
@@ -288,25 +281,21 @@ const LeaderboardHero = ({ leaderboard = dummyLeaderboard }) => {
                           </span>
                         )}
                       </span>
-
-                      {/* Avatar initial */}
                       <div
                         className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-slate-900"
                         style={{ background: color.bar }}
                       >
                         {person.name.charAt(0)}
                       </div>
-
                       <div>
                         <p className="text-sm font-bold text-white leading-none">
                           {person.name}
                         </p>
-                        <p className="text-xs text-slate-500 font-mono mt-0.5">
+                        <p className="text-xs text-slate-400 font-mono mt-0.5">
                           {person.role}
                         </p>
                       </div>
                     </div>
-
                     <span
                       className={`text-sm font-bold font-mono ${color.text}`}
                     >
@@ -314,10 +303,9 @@ const LeaderboardHero = ({ leaderboard = dummyLeaderboard }) => {
                     </span>
                   </div>
 
-                  {/* Progress bar */}
                   <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
                     <div
-                      className="h-1.5 rounded-full transition-all duration-700"
+                      className="h-1.5 rounded-full transition-all duration-1000 ease-out"
                       style={{ width: `${progress}%`, background: color.bar }}
                     />
                   </div>

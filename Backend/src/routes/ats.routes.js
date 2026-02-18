@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { getLatestATS } = require("../controllers/ats.controller");
+const { analyzeResume } = require("../controllers/ats.controller"); // make sure this exists
 
-// Example route
-router.get("/latest", getLatestATS);
+// Route to get dummy ATS analysis
+router.get("/latest", analyzeResume);
 
-module.exports = router; // ✅ Must export the router directly
+module.exports = router; // ✅ Must export the router

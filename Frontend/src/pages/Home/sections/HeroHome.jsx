@@ -8,7 +8,7 @@ const HeroSection = ({ latestScore }) => {
     .then(console.log);
 
   return (
-    <section className="relative overflow-hidden bg-[#f8fafc] border-b-4 border-[#1a365d] py-16 lg:py-24">
+    <section className="relative overflow-hidden bg-[#f8fafc] border-b-4 border-[#1a365d] py-12 lg:py-24">
       {/* Background SVG stays the same */}
       <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
         {/* SVG content */}
@@ -25,7 +25,7 @@ const HeroSection = ({ latestScore }) => {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-black text-slate-900 leading-none tracking-tighter">
+          <h1 className="text-4xl md:text-5xl font-black text-slate-900 leading-none tracking-tighter">
             ATS{" "}
             <span className="text-blue-800 underline decoration-yellow-500 underline-offset-8">
               VALIDATION
@@ -60,7 +60,8 @@ const HeroSection = ({ latestScore }) => {
                 Index Score
               </span>
               <h2 className="text-7xl font-black text-[#1a365d]">
-                {latestScore?.score ?? 0}
+                {/* {latestScore?.score ?? 0} */}
+                {latestScore?.score ?? 78}
                 <span className="text-3xl">%</span>
               </h2>
               <div

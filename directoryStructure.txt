@@ -49,29 +49,20 @@ govermentPoly/
 │   │   │   |   ├── LeaderboardPage.jsx
 │   │   │   |   └── 📁 sections/
 │   │   │   |       ├── LeaderboardHero.jsx
-│   │   │   |       └── ActionSection.jsx
 |   |   |   |
 │   │   │   └── 📁 Profile/
 │   │   │   |   ├── ProfilePage.jsx
 │   │   │   |   └── 📁 sections/
 │   │   │   |       ├── ProfileHero.jsx
-│   │   │   |       └── ActionSection.jsx
 |   |   |   |
 │   │   │   └── 📁 Help/
 │   │   │       ├── HelpPage.jsx
 │   │   │       └── 📁 sections/
 │   │   │           ├── HelpHero.jsx
-│   │   │           └── ActionSection.jsx
 │   │   │
 │   │   ├── 📁 components/
 │   │   │   ├── Navbar.jsx
-│   │   │   └── Card.jsx
 │   │   │
-│   │   ├── 📁 context/
-│   │   │   └── AppContext.jsx
-│   │   │
-│   │   ├── 📁 utils/
-│   │   │   └── helpers.js
 │   │   │
 │   │   ├── 📁 api/
 │   │   │   └── axios.js

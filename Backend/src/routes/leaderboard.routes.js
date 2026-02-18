@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { getStats } = require("../controllers/leaderboard.controller");
+const { getLeaderboard } = require("../controllers/leaderboard.controller");
 
-router.get("/stats", getStats);
+// ✅ Make sure getLeaderboard is a function
+router.get("/top", getLeaderboard);
 
 module.exports = router;
