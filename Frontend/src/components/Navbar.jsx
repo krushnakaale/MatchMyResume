@@ -16,12 +16,13 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-3">
-            {["/", "/ats", "/leaderboard", "/help", "/profile"].map(
+            {["/", "/ats", "/leaderboard", "/jobs", "/help", "/profile"].map(
               (path, index) => {
                 const labels = [
                   "Home",
                   "ATS Analyzer",
                   "Leadership Board",
+                  "Jobs",
                   "Help",
                   "Profile",
                 ];
@@ -81,6 +82,7 @@ const Navbar = () => {
                 "Home",
                 "ATS Analyzer",
                 "Leadership Board",
+                "jobs",
                 "Help",
                 "Profile",
               ];

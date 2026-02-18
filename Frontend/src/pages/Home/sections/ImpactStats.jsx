@@ -1,34 +1,67 @@
-const ImpactStats = ({ stats }) => {
-  if (!stats) return <p className="text-center py-16">Loading statistics...</p>;
+import React from "react";
 
-  const data = [
-    { number: stats.totalResumes || "0", label: "Documents Evaluated" },
-    { number: stats.systemAccuracy + "%", label: "System Accuracy Rate" },
+const ImpactStats = () => {
+  // Online tech stack logos
+  const techs = [
     {
-      number: stats.registeredApplicants || "0",
-      label: "Registered Applicants",
+      name: "React",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     },
     {
-      number: stats.publicRating || "4.8 / 5",
-      label: "Public Feedback Rating",
+      name: "Node.js",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    },
+    {
+      name: "Tailwind CSS",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
+    },
+    {
+      name: "MongoDB",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    },
+    {
+      name: "TypeScript",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    },
+    {
+      name: "Docker",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
     },
   ];
 
   return (
     <section className="bg-white border-t border-b border-slate-300 py-16">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-4 divide-x divide-slate-300 text-center">
-          {data.map((stat, index) => (
-            <div key={index} className="px-6">
-              <h3 className="text-3xl font-extrabold text-blue-900">
-                {stat.number}
-              </h3>
-              <p className="mt-2 text-slate-600 text-sm uppercase tracking-wide">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
+        <h2 className="text-2xl font-extrabold text-blue-900 text-center mb-10">
+          Our Tech Stack
+        </h2>
+
+        {techs.length === 0 ? (
+          <p className="text-center py-16 text-slate-500">
+            No technologies listed yet.
+          </p>
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 text-center">
+            {techs.map((tech, idx) => (
+              <div key={idx} className="flex flex-col items-center gap-2">
+                {tech.logo ? (
+                  <img
+                    src={tech.logo}
+                    alt={tech.name}
+                    className="w-12 h-12 object-contain"
+                  />
+                ) : (
+                  <div className="w-12 h-12 flex items-center justify-center bg-slate-100 rounded-full text-slate-700 font-bold text-sm">
+                    {tech.name[0]}
+                  </div>
+                )}
+                <span className="text-sm font-mono text-slate-600">
+                  {tech.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

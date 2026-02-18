@@ -16,21 +16,22 @@ const HeroSection = ({ latestScore }) => {
 
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
         {/* LEFT CONTENT */}
-        <div>
+        <div className="flex flex-col space-y-6">
           {/* Status badge */}
-          <div className="inline-flex items-center space-x-2 bg-blue-50 border border-blue-200 px-3 py-1 mb-6">
+          <div className="inline-flex items-center space-x-2 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
             <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-            <span className="text-[10px] font-black uppercase tracking-widest text-blue-900">
+            <span className="text-[14px] font-black uppercase tracking-widest text-blue-900">
               System Live: AI Verification Engine
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-black text-slate-900 leading-none tracking-tighter">
+          {/* Main Heading */}
+          <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">
             ATS{" "}
-            <span className="text-blue-800 underline decoration-yellow-500 underline-offset-8">
+            <span className="text-blue-800 underline decoration-yellow-500 underline-offset-8 block mb-2">
               VALIDATION
             </span>
-            <br />& ANALYSIS PORTAL
+            <span className="block leading-snug">& ANALYSIS PORTAL</span>
           </h1>
 
           <p className="mt-8 text-lg text-slate-700 leading-relaxed border-l-4 border-[#1a365d] pl-6 max-w-xl">
