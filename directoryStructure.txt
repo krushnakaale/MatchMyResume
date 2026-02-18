@@ -1,0 +1,109 @@
+govermentPoly/
+│
+├── 📁 Backend/
+│   ├── 📁 src/
+│   │   ├── 📁 models/
+│   │   |   ├── user.model.js
+│   │   |   ├── score.model.js
+|   |   |
+│   │   ├── 📁 routes/
+│   │   |   ├── ats.routes.js
+│   │   |   ├── profile.routes.js
+│   │   |   ├── leaderboard.routes.js
+│   │   │   └── resume.routes.js
+|   |   |
+│   │   ├── 📁 controllers/
+│   │   |   ├── ats.controller.js
+│   │   |   ├── profile.controller.js
+│   │   |   ├── leaderboard.controller.js
+│   │   │   └── resume.controller.js
+|   |   |
+│   │   ├── 📁 middleware/
+│   │   │   └── dummyAuth.js
+│   │   └── server.js
+|   |
+│   ├── .env                 ← Secret (can't push)
+│   ├── .gitignore
+│   └── package.json
+│
+├── 📁 Frontend/
+│   ├── 📁 src/
+│   │   ├── 📁 pages/
+│   │   │   ├── 📁 Home/
+│   │   │   │   ├── HomePage.jsx
+│   │   │   │   └── 📁 sections/
+│   │   │   │       ├── HeroHome.jsx
+│   │   │   │       ├── FeatureSection.jsx
+│   │   │   │       └── FooterSection.jsx
+|   |   |   |
+│   │   │   ├── 📁 ATSAnalyzer/
+│   │   │   │   ├── ATSPage.jsx
+│   │   │   │   └── 📁 sections/
+│   │   │   │       ├── ATSHero.jsx
+│   │   │   │       ├── ResultSection.jsx
+│   │   │   │       └── ScoreBreakdown.jsx
+|   |   |   |
+│   │   │   └── 📁 Leaderboard/
+│   │   │   |   ├── LeaderboardPage.jsx
+│   │   │   |   └── 📁 sections/
+│   │   │   |       ├── LeaderboardHero.jsx
+│   │   │   |       └── ActionSection.jsx
+|   |   |   |
+│   │   │   └── 📁 Profile/
+│   │   │   |   ├── ProfilePage.jsx
+│   │   │   |   └── 📁 sections/
+│   │   │   |       ├── ProfileHero.jsx
+│   │   │   |       └── ActionSection.jsx
+|   |   |   |
+│   │   │   └── 📁 Help/
+│   │   │       ├── HelpPage.jsx
+│   │   │       └── 📁 sections/
+│   │   │           ├── HelpHero.jsx
+│   │   │           └── ActionSection.jsx
+│   │   │
+│   │   ├── 📁 components/
+│   │   │   ├── Navbar.jsx
+│   │   │   └── Card.jsx
+│   │   │
+│   │   ├── 📁 context/
+│   │   │   └── AppContext.jsx
+│   │   │
+│   │   ├── 📁 utils/
+│   │   │   └── helpers.js
+│   │   │
+│   │   ├── 📁 api/
+│   │   │   └── axios.js
+│   │   │
+│   │   ├── index.css
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   │
+│   ├── .env                 ← NEW ✅ (add kara)
+│   ├── index.html
+│   └── package.json
+│
+├── .gitignore
+└── README.md
+
+
+----Frontend----
+
+VITE_API_BASE_URL=http://localhost:8080/api
+
+----Backend----
+
+PORT=8080
+MONGO_URI=mongodb://localhost:27017/governmentPoly
+
+----.gitignore----
+
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.local
+
+# Build files
+dist/
+build/
