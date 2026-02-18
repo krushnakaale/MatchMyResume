@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const { getLatestATS } = require("../controllers/ats.controller");
 
-const { analyzeResume } = require("../controllers/ats.controller");
+// Example route
+router.get("/latest", getLatestATS);
 
-// POST /api/analyze
-router.post("/", analyzeResume);
-
-module.exports = router;
+module.exports = router; // ✅ Must export the router directly

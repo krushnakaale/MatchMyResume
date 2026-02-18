@@ -1,22 +1,16 @@
-exports.createResume = async (req, res) => {
-  try {
-    const { name, email, skills, experience, education } = req.body;
+// Backend/src/controllers/resume.controller.js
 
-    if (!name || !email) {
-      return res.status(400).json({ message: "Name and Email required" });
-    }
+// Dummy handler for resume upload
+const uploadResume = (req, res) => {
+  // For now just return a success message
+  // Later, you can integrate file parsing, AI validation, or DB save
+  res.json({
+    message: "Resume uploaded successfully!",
+    data: req.body, // temporary placeholder
+  });
+};
 
-    res.status(200).json({
-      message: "Resume created successfully",
-      resumeData: {
-        name,
-        email,
-        skills,
-        experience,
-        education,
-      },
-    });
-  } catch (error) {
-    res.status(500).json({ message: "Server Error" });
-  }
+// Export as an object
+module.exports = {
+  uploadResume,
 };

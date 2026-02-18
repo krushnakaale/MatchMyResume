@@ -1,9 +1,14 @@
+// Backend/src/routes/resume.routes.js
 const express = require("express");
 const router = express.Router();
 
-const { createResume } = require("../controllers/resume.controller");
+// Import the controller
+const { uploadResume } = require("../controllers/resume.controller");
 
-// POST /api/resume
-router.post("/", createResume);
+// POST endpoint to upload resume
+router.post("/upload", uploadResume); // ✅ pass function reference
+
+// Add more resume-related endpoints here if needed
+// router.get("/history", getResumeHistory);
 
 module.exports = router;

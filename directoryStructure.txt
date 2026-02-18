@@ -33,8 +33,10 @@ govermentPoly/
 │   │   │   │   ├── HomePage.jsx
 │   │   │   │   └── 📁 sections/
 │   │   │   │       ├── HeroHome.jsx
-│   │   │   │       ├── FeatureSection.jsx
-│   │   │   │       └── FooterSection.jsx
+│   │   │   │       ├── CoreFeatures.jsx
+│   │   │   │       ├── FinalCTA.jsx
+│   │   │   │       ├── ImpactStats.jsx
+│   │   │   │       └── WorkflowSections.jsx
 |   |   |   |
 │   │   │   ├── 📁 ATSAnalyzer/
 │   │   │   │   ├── ATSPage.jsx
